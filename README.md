@@ -1,3 +1,14 @@
+# Video Rental - React with Mosh Hamedani
+
+**Author** Peter Cole  
+**Version** 1.0.0
+
+## Overview
+
+Coding along with the [Mastering React Course](https://codewithmosh.com/p/mastering-react), building an in-depth video rental app.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
