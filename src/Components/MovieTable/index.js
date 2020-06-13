@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './Table.css';
+import MovieList from '../MovieList';
 
 export default class Table extends Component {
+	state = {};
+
 	render() {
 		return (
 			<div>
@@ -13,6 +16,7 @@ export default class Table extends Component {
 						<th>Rate</th>
 						<th></th>
 					</tr>
+					<MovieList />
 				</table>
 			</div>
 		);
