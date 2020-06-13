@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Table.css';
+import './MovieTable.css';
 import MovieList from '../MovieList';
 
 export default class Table extends Component {
