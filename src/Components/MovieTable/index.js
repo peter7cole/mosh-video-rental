@@ -4,7 +4,6 @@ import MovieList from '../MovieList';
 
 export default class Table extends Component {
 	state = {};
-
 	render() {
 		return (
 			<div>
