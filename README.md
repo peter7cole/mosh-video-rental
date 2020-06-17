@@ -1,7 +1,7 @@
 # Video Rental - React with Mosh Hamedani
 
 **Author** Peter Cole  
-**Version** 1.0.2
+**Version** 1.0.4
 
 ## Overview
 
