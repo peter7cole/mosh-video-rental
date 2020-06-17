@@ -15,8 +15,10 @@ export default class Table extends Component {
 	};
 
 	render() {
+		if (this.state.movieCount === 0)
+			return <p>There are no movies in the database</p>;
 		return (
-			<div>
+			<React.Fragment>
 				<p>Showing {this.state.movieCount} movies in the database.</p>
 				<table className="table">
 					<thead>
@@ -47,7 +49,7 @@ export default class Table extends Component {
 						))}
 					</tbody>
 				</table>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
