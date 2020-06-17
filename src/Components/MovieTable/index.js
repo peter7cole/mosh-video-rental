@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import './MovieTable.css';
-import MovieList from '../MovieList';
+import { getMovies } from '../../services/fakeMovieService';
 
 export default class Table extends Component {
+	state = {
+		movies: getMovies(),
+		movieCount: getMovies().length
+	};
+
+	handleDelete = movie => {
+		const movies = this.state.movies.filter(m => m._id !== movie._id);
+		const movieCount = movies.length;
+		this.setState({ movies, movieCount });
+	};
+
 	render() {
 		return (
 			<div>
-				<table>
+				<p>Showing {this.state.movieCount} movies in the database.</p>
+				<table className="table">
 					<thead>
 						<tr>
 							<th>Title</th>
@@ -17,7 +29,22 @@ export default class Table extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						<MovieList />
+						{this.state.movies.map(movie => (
+							<tr key={movie._id}>
+								<td>{movie.genre.name}</td>
+								<td>{movie.title}</td>
+								<td>{movie.numberInStock}</td>
+								<td>{movie.dailyRentalRate}</td>
+								<td>
+									<button
+										onClick={() => this.handleDelete(movie)}
+										className="btn btn-danger btn-sm"
+									>
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
