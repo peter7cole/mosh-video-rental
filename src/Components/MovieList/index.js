@@ -9,7 +9,7 @@ export default class MovieList extends Component {
 			<React.Fragment>
 				{movies.map(movie => (
 					<Movie
-						key={movie.id}
+						key={movie._id}
 						title={movie.title}
 						genre={movie.genre.name}
 						stock={movie.numberInStock}

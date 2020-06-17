@@ -7,14 +7,18 @@ export default class Table extends Component {
 		return (
 			<div>
 				<table>
-					<tr>
-						<th>Title</th>
-						<th>Genre</th>
-						<th>Stock</th>
-						<th>Rate</th>
-						<th></th>
-					</tr>
-					<MovieList />
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Genre</th>
+							<th>Stock</th>
+							<th>Rate</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<MovieList />
+					</tbody>
 				</table>
 			</div>
 		);
