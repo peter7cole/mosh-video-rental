@@ -3,7 +3,6 @@ import Movie from '../Movie';
 import { getMovies } from '../../services/fakeMovieService';
 
 export default class MovieList extends Component {
-	state = { getMovies };
 	render() {
 		const movies = getMovies();
 		return (
