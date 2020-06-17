@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Movie.css';
 
 export default class Movie extends Component {
 	render() {
@@ -11,7 +12,7 @@ export default class Movie extends Component {
 					<td>{stock}</td>
 					<td>{rate}</td>
 					<td>
-						<button>DELETE</button>
+						<button>Delete</button>
 					</td>
 				</tr>
 			</React.Fragment>
