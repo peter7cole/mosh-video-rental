@@ -18,18 +18,18 @@ export default class Table extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.props.movies.map(m => (
-							<tr key={m._id}>
-								<td>{m.genre.name}</td>
-								<td>{m.title}</td>
-								<td>{m.numberInStock}</td>
-								<td>{m.dailyRentalRate}</td>
+						{this.props.movies.map(movie => (
+							<tr key={movie._id}>
+								<td>{movie.genre.name}</td>
+								<td>{movie.title}</td>
+								<td>{movie.numberInStock}</td>
+								<td>{movie.dailyRentalRate}</td>
 								<td>
-									<LikeHeart liked={m.liked} />
+									<LikeHeart liked={movie.liked} />
 								</td>
 								<td>
 									<button
-										onClick={() => this.props.onDelete(m)}
+										onClick={() => this.props.onDelete(movie)}
 										className="btn btn-danger btn-sm"
 									>
 										Delete
