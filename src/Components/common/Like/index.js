@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// Input is liked: boolean
-// Output is onClick: change that boolean, in this case an empty or full heart
+// Stateless functional components don't need a this anywhere as props is passed as an argument. They also require the export to be separate.
 
-export default class LikeHeart extends Component {
-	render() {
-		let classes = 'fa fa-heart';
-		if (!this.props.liked) classes += '-o';
-		return (
-			<div>
-				<i
-					onClick={() => this.props.onLike(this.props.movie)}
-					className={classes}
-					style={{ cursor: 'pointer' }}
-					aria-hidden="true"
-				/>
-			</div>
-		);
-	}
-}
+const Like = props => {
+	let classes = 'fa fa-heart';
+	if (!props.liked) classes += '-o';
+	return (
+		<i
+			onClick={() => props.onLike(props.movie)}
+			className={classes}
+			style={{ cursor: 'pointer' }}
+			aria-hidden="true"
+		/>
+	);
+};
+
+export default Like;
