@@ -5,9 +5,11 @@ import React, { Component } from 'react';
 
 export default class LikeHeart extends Component {
 	render() {
+		let classes = 'fa fa-heart';
+		if (!this.props.liked) classes += '-o';
 		return (
 			<div>
-				<i className="fas fa-heart-o" aria-hidden="true"></i>
+				<i className={classes} aria-hidden="true" />
 			</div>
 		);
 	}

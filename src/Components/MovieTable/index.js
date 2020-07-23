@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MovieTable.css';
-import LikeHeart from '../common/LikeHeart';
+import Like from '../common/Like';
 
 export default class Table extends Component {
 	render() {
@@ -25,7 +25,7 @@ export default class Table extends Component {
 								<td>{movie.numberInStock}</td>
 								<td>{movie.dailyRentalRate}</td>
 								<td>
-									<LikeHeart liked={movie.liked} />
+									<Like liked={true} />
 								</td>
 								<td>
 									<button
