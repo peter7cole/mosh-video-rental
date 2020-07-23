@@ -9,7 +9,12 @@ export default class LikeHeart extends Component {
 		if (!this.props.liked) classes += '-o';
 		return (
 			<div>
-				<i className={classes} aria-hidden="true" />
+				<i
+					onClick={() => this.props.onLike(this.props.movie)}
+					className={classes}
+					style={{ cursor: 'pointer' }}
+					aria-hidden="true"
+				/>
 			</div>
 		);
 	}

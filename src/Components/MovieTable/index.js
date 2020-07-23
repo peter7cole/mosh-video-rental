@@ -25,12 +25,18 @@ export default class Table extends Component {
 								<td>{movie.numberInStock}</td>
 								<td>{movie.dailyRentalRate}</td>
 								<td>
-									<Like liked={true} />
+									<Like
+										liked={movie.liked}
+										onLike={() => {
+											this.props.onLike(movie);
+										}}
+									/>
 								</td>
 								<td>
 									<button
 										onClick={() => this.props.onDelete(movie)}
 										className="btn btn-danger btn-sm"
+										style={{ cursor: 'pointer' }}
 									>
 										Delete
 									</button>
