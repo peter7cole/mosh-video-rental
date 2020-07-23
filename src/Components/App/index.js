@@ -10,6 +10,14 @@ export default class App extends Component {
 		movieCount: getMovies().length
 	};
 
+	handleLike = movie => {
+		const movies = [...this.state.movies];
+		const index = movies.indexOf(movie);
+		movies[index] = { ...movies[index] };
+		movies[index].liked = !movies[index].liked;
+		this.setState({ movies });
+	};
+
 	handleDelete = movie => {
 		const movies = this.state.movies.filter(m => m._id !== movie._id);
 		const movieCount = movies.length;
@@ -22,7 +30,11 @@ export default class App extends Component {
 		return (
 			<main className="container">
 				<Counter movieCount={movieCount} />
-				<Table movies={movies} onDelete={this.handleDelete} />
+				<Table
+					movies={movies}
+					onLike={this.handleLike}
+					onDelete={this.handleDelete}
+				/>
 			</main>
 		);
 	}

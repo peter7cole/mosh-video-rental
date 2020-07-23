@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './MovieTable.css';
+import Like from '../common/Like';
 
 export default class Table extends Component {
 	render() {
@@ -13,6 +14,7 @@ export default class Table extends Component {
 							<th>Stock</th>
 							<th>Rate</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -23,9 +25,18 @@ export default class Table extends Component {
 								<td>{movie.numberInStock}</td>
 								<td>{movie.dailyRentalRate}</td>
 								<td>
+									<Like
+										liked={movie.liked}
+										onLike={() => {
+											this.props.onLike(movie);
+										}}
+									/>
+								</td>
+								<td>
 									<button
 										onClick={() => this.props.onDelete(movie)}
 										className="btn btn-danger btn-sm"
+										style={{ cursor: 'pointer' }}
 									>
 										Delete
 									</button>
