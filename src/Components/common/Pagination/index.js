@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Pagination extends Component {
-	render() {
-		return (
-			<div>
-				<nav aria-label="Page navigation example">
-					<ul className="pagination">
-						<li className="page-item">
-							<a className="page-link" href="#">
-								1
-							</a>
-						</li>
-						<li className="page-item">
-							<a className="page-link" href="#">
-								2
-							</a>
-						</li>
-						<li className="page-item">
-							<a className="page-link" href="#">
-								3
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		);
+const Pagination = props => {
+	const { itemsCount, itemsPerPage } = props;
+	const pagesCount = Math.ceil(itemsCount / itemsPerPage);
+	if (pagesCount <= 1) return null;
+	const pages = [];
+	for (let i = 0; i < pagesCount; i++) {
+		pages[i] = i + 1;
 	}
-}
+
+	return (
+		<nav>
+			<ul className="pagination">
+				{pages.map(page => (
+					<li key={page} className="page-item">
+						<a href="/" className="page-link">
+							{page}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	);
+};
+
+export default Pagination;

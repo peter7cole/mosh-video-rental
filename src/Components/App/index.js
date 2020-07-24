@@ -9,7 +9,7 @@ export default class App extends Component {
 	state = {
 		movies: getMovies(),
 		movieCount: getMovies().length,
-		pageSize: 4
+		itemsPerPage: 9
 	};
 
 	handleLike = movie => {
@@ -31,7 +31,7 @@ export default class App extends Component {
 	};
 
 	render() {
-		const { movies, movieCount, pageSize } = this.state;
+		const { movies, movieCount, itemsPerPage } = this.state;
 		if (movieCount === 0) return <p>There are no movies in the database</p>;
 		return (
 			<main className="container">
@@ -43,7 +43,7 @@ export default class App extends Component {
 				/>
 				<Pagination
 					itemsCount={movieCount}
-					pageSize={pageSize}
+					itemsPerPage={itemsPerPage}
 					onPageChange={this.handlePageChange}
 				/>
 			</main>
