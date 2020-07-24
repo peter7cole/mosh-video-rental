@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pagination = props => {
-	const { itemsCount, itemsPerPage } = props;
+	const { itemsCount, itemsPerPage, onPageChange } = props;
 	const pagesCount = Math.ceil(itemsCount / itemsPerPage);
 	if (pagesCount <= 1) return null;
 	const pages = [];
@@ -14,7 +14,11 @@ const Pagination = props => {
 			<ul className="pagination">
 				{pages.map(page => (
 					<li key={page} className="page-item">
-						<a href="/" className="page-link">
+						<a
+							href="/"
+							className="page-link"
+							onClick={() => onPageChange(page)}
+						>
 							{page}
 						</a>
 					</li>

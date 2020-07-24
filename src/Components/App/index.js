@@ -9,7 +9,7 @@ export default class App extends Component {
 	state = {
 		movies: getMovies(),
 		movieCount: getMovies().length,
-		itemsPerPage: 9
+		itemsPerPage: 4
 	};
 
 	handleLike = movie => {
