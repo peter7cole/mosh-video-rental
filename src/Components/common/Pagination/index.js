@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pagination = props => {
-	const { itemsCount, itemsPerPage, onPageChange } = props;
+	const { itemsCount, itemsPerPage, onPageChange, currentPage } = props;
 	const pagesCount = Math.ceil(itemsCount / itemsPerPage);
 	if (pagesCount <= 1) return null;
 	const pages = [];
@@ -13,9 +13,12 @@ const Pagination = props => {
 		<nav>
 			<ul className="pagination">
 				{pages.map(page => (
-					<li key={page} className="page-item">
+					<li
+						key={page}
+						className={page === currentPage ? 'page-item active' : 'page-item'}
+					>
 						<a
-							href="/"
+							// href="/"
 							className="page-link"
 							onClick={() => onPageChange(page)}
 						>
