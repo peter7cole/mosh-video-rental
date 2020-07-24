@@ -3,11 +3,13 @@ import './App.css';
 import Counter from '../MovieCounter';
 import Table from '../MovieTable';
 import { getMovies } from '../../services/fakeMovieService';
+import Pagination from '../common/Pagination';
 
 export default class App extends Component {
 	state = {
 		movies: getMovies(),
-		movieCount: getMovies().length
+		movieCount: getMovies().length,
+		pageSize: 4
 	};
 
 	handleLike = movie => {
@@ -24,8 +26,12 @@ export default class App extends Component {
 		this.setState({ movies, movieCount });
 	};
 
+	handlePageChange = page => {
+		console.log(`Page #${page}`);
+	};
+
 	render() {
-		const { movies, movieCount } = this.state;
+		const { movies, movieCount, pageSize } = this.state;
 		if (movieCount === 0) return <p>There are no movies in the database</p>;
 		return (
 			<main className="container">
@@ -34,6 +40,11 @@ export default class App extends Component {
 					movies={movies}
 					onLike={this.handleLike}
 					onDelete={this.handleDelete}
+				/>
+				<Pagination
+					itemsCount={movieCount}
+					pageSize={pageSize}
+					onPageChange={this.handlePageChange}
 				/>
 			</main>
 		);
