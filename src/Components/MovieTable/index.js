@@ -32,7 +32,6 @@ export default class Table extends Component {
 									<button
 										onClick={() => onDelete(movie)}
 										className="btn btn-danger btn-sm"
-										style={{ cursor: 'pointer' }}
 									>
 										Delete
 									</button>

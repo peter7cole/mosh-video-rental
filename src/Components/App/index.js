@@ -3,13 +3,16 @@ import './App.css';
 import Counter from '../MovieCounter';
 import Table from '../MovieTable';
 import { getMovies } from '../../services/fakeMovieService';
+import { genres } from '../../services/fakeGenreService';
 import Pagination from '../common/Pagination';
 import paginate from '../../utils/paginate';
+import ListGroup from '../common/ListGroup';
 
 export default class App extends Component {
 	state = {
 		movies: getMovies(),
 		movieCount: getMovies().length,
+		genres: genres,
 		itemsPerPage: 4,
 		currentPage: 1
 	};
@@ -33,11 +36,18 @@ export default class App extends Component {
 	};
 
 	render() {
-		const { movies, movieCount, itemsPerPage, currentPage } = this.state;
+		const {
+			movies,
+			movieCount,
+			genres,
+			itemsPerPage,
+			currentPage
+		} = this.state;
 		if (movieCount === 0) return <p>There are no movies in the database</p>;
 
 		return (
 			<main className="container">
+				<ListGroup genres={genres} />
 				<Counter movieCount={movieCount} />
 				<Table
 					moviesPaginated={paginate(movies, currentPage, itemsPerPage)}

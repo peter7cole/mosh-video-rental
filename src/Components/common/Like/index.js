@@ -1,4 +1,5 @@
 import React from 'react';
+import './Like.css';
 
 // Stateless functional components don't need a this anywhere as props is passed as an argument. They also require the export to be separate.
 
@@ -9,7 +10,6 @@ const Like = props => {
 		<i
 			onClick={() => props.onLike(props.movie)}
 			className={classes}
-			style={{ cursor: 'pointer' }}
 			aria-hidden="true"
 		/>
 	);
