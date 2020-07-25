@@ -29,22 +29,18 @@ export default class App extends Component {
 	};
 
 	handlePageChange = page => {
-		console.log(`Page #${page}`);
 		this.setState({ currentPage: page });
 	};
 
 	render() {
 		const { movies, movieCount, itemsPerPage, currentPage } = this.state;
-
 		if (movieCount === 0) return <p>There are no movies in the database</p>;
-
-		const moviesPaginated = paginate(movies, currentPage, itemsPerPage);
 
 		return (
 			<main className="container">
 				<Counter movieCount={movieCount} />
 				<Table
-					movies={moviesPaginated}
+					moviesPaginated={paginate(movies, currentPage, itemsPerPage)}
 					onLike={this.handleLike}
 					onDelete={this.handleDelete}
 				/>
