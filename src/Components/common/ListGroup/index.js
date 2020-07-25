@@ -14,7 +14,9 @@ const ListGroup = props => {
 				<li
 					key={item[valueProperty]}
 					className={
-						item === selectedItem ? 'list-group-item active' : 'list-group-item'
+						item._id === selectedItem._id
+							? 'list-group-item active'
+							: 'list-group-item'
 					}
 					onClick={() => onItemSelect(item)}
 				>
