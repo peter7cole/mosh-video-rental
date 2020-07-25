@@ -1,7 +1,7 @@
 # Video Rental - React with Mosh Hamedani
 
 **Author** Peter Cole  
-**Version** 1.0.6
+**Version** 1.0.7
 
 ## Overview
 
@@ -9,7 +9,7 @@ Coding along with the [Mastering React Course](https://codewithmosh.com/p/master
 
 ## Project Snapshot
 
-![Version 1.0.5](./assets/1-0-6/v1-0-6.png)
+![Version 1.0.7](./assets/1-0-7/v1-0-7.png)
 
 ---
 

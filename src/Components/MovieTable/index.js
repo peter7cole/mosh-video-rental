@@ -4,6 +4,7 @@ import Like from '../common/Like';
 
 export default class Table extends Component {
 	render() {
+		const { moviesPaginated, onLike, onDelete } = this.props;
 		return (
 			<React.Fragment>
 				<table className="table">
@@ -18,25 +19,19 @@ export default class Table extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.props.movies.map(movie => (
+						{moviesPaginated.map(movie => (
 							<tr key={movie._id}>
 								<td>{movie.genre.name}</td>
 								<td>{movie.title}</td>
 								<td>{movie.numberInStock}</td>
 								<td>{movie.dailyRentalRate}</td>
 								<td>
-									<Like
-										liked={movie.liked}
-										onLike={() => {
-											this.props.onLike(movie);
-										}}
-									/>
+									<Like liked={movie.liked} onLike={() => onLike(movie)} />
 								</td>
 								<td>
 									<button
-										onClick={() => this.props.onDelete(movie)}
+										onClick={() => onDelete(movie)}
 										className="btn btn-danger btn-sm"
-										style={{ cursor: 'pointer' }}
 									>
 										Delete
 									</button>
