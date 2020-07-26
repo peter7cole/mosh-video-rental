@@ -47,8 +47,8 @@ export default class App extends Component {
 		this.setState({ selectedGenre: genre, currentPage: 1 });
 	};
 
-	handleSort = path => {
-		this.setState({ sortColumn: { path, order: 'asc' } });
+	handleSort = sortColumn => {
+		this.setState({ sortColumn });
 	};
 
 	render() {
@@ -94,6 +94,7 @@ export default class App extends Component {
 						onLike={this.handleLike}
 						onDelete={this.handleDelete}
 						onSort={this.handleSort}
+						sortColumn={sortColumn}
 					/>
 					<Pagination
 						itemsCount={moviesFiltered.length}
