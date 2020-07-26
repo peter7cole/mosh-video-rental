@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Counter extends Component {
-	render() {
-		return <p>Showing {this.props.movieCount} movies in the database.</p>;
-	}
-}
+const Counter = props => {
+	return <p>Showing {props.movieCount} movies in the database.</p>;
+};
+
+export default Counter;

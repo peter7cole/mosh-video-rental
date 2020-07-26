@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Counter from '../MovieCounter';
-import Table from '../MovieTable';
+import MovieTable from '../MovieTable';
 import { getMovies } from '../../services/fakeMovieService';
 import { getGenres } from '../../services/fakeGenreService';
 import Pagination from '../common/Pagination';
@@ -14,7 +14,7 @@ export default class App extends Component {
 		genres: [],
 		itemsPerPage: 4,
 		currentPage: 1,
-		selectedGenre: { _id: '5b21ca3eeb7f6fbccd471833', name: 'All Genres' } // current solution to a default genre
+		selectedGenre: { _id: '', name: 'All Genres' } // current solution to a default genre
 	};
 
 	// this lifecycle method is called when an instance of this component is rendered in the DOM
@@ -43,6 +43,10 @@ export default class App extends Component {
 
 	handleGenreSelect = genre => {
 		this.setState({ selectedGenre: genre, currentPage: 1 });
+	};
+
+	handleSort = path => {
+		console.log(path);
 	};
 
 	render() {
@@ -80,10 +84,11 @@ export default class App extends Component {
 				</div>
 				<div className="col">
 					<Counter movieCount={moviesFilteredByGenre.length} />
-					<Table
+					<MovieTable
 						moviesPaginated={moviesPaginated}
 						onLike={this.handleLike}
 						onDelete={this.handleDelete}
+						onSort={this.handleSort}
 					/>
 					<Pagination
 						itemsCount={moviesFilteredByGenre.length}
