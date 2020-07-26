@@ -7,6 +7,7 @@ import { getGenres } from '../../services/fakeGenreService';
 import Pagination from '../common/Pagination';
 import paginate from '../../utils/paginate';
 import ListGroup from '../common/ListGroup';
+import _ from 'lodash';
 
 export default class App extends Component {
 	state = {
@@ -14,7 +15,8 @@ export default class App extends Component {
 		genres: [],
 		itemsPerPage: 4,
 		currentPage: 1,
-		selectedGenre: { _id: '', name: 'All Genres' } // current solution to a default genre
+		selectedGenre: { _id: '', name: 'All Genres' }, // current solution to a default genre
+		sortColumn: { path: 'title', order: 'asc' }
 	};
 
 	// this lifecycle method is called when an instance of this component is rendered in the DOM
@@ -46,7 +48,7 @@ export default class App extends Component {
 	};
 
 	handleSort = path => {
-		console.log(path);
+		this.setState({ sortColumn: { path, order: 'asc' } });
 	};
 
 	render() {
@@ -55,23 +57,26 @@ export default class App extends Component {
 			genres,
 			itemsPerPage,
 			currentPage,
-			selectedGenre
+			selectedGenre,
+			sortColumn
 		} = this.state;
 
 		const { length: movieCount } = movies;
 
 		if (movieCount === 0) return <p>There are no movies in the database</p>;
 
-		const moviesFilteredByGenre =
+		const moviesFiltered =
 			selectedGenre.name !== 'All Genres'
 				? movies.filter(movie => movie.genre._id === selectedGenre._id)
 				: movies;
 
-		const moviesPaginated = paginate(
-			moviesFilteredByGenre,
-			currentPage,
-			itemsPerPage
+		const sortedMovies = _.orderBy(
+			moviesFiltered,
+			[sortColumn.path],
+			[sortColumn.order]
 		);
+
+		const moviesPaginated = paginate(sortedMovies, currentPage, itemsPerPage);
 
 		return (
 			<div className="row">
@@ -83,7 +88,7 @@ export default class App extends Component {
 					/>
 				</div>
 				<div className="col">
-					<Counter movieCount={moviesFilteredByGenre.length} />
+					<Counter movieCount={moviesFiltered.length} />
 					<MovieTable
 						moviesPaginated={moviesPaginated}
 						onLike={this.handleLike}
@@ -91,7 +96,7 @@ export default class App extends Component {
 						onSort={this.handleSort}
 					/>
 					<Pagination
-						itemsCount={moviesFilteredByGenre.length}
+						itemsCount={moviesFiltered.length}
 						itemsPerPage={itemsPerPage}
 						onPageChange={this.handlePageChange}
 						currentPage={currentPage}
