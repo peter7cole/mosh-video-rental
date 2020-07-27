@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MovieTable.css';
 import Like from '../common/Like';
+import { map } from 'lodash';
 
 class MovieTable extends Component {
 	raiseSort = path => {
@@ -30,18 +31,18 @@ class MovieTable extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{moviesPaginated.map(movie => (
-							<tr key={movie._id}>
-								<td>{movie.title}</td>
-								<td>{movie.genre.name}</td>
-								<td>{movie.numberInStock}</td>
-								<td>{movie.dailyRentalRate}</td>
+						{moviesPaginated.map(m => (
+							<tr key={m._id}>
+								<td>{m.title}</td>
+								<td>{m.genre.name}</td>
+								<td>{m.numberInStock}</td>
+								<td>{m.dailyRentalRate}</td>
 								<td>
-									<Like liked={movie.liked} onLike={() => onLike(movie)} />
+									<Like liked={m.liked} onLike={() => onLike(m)} />
 								</td>
 								<td>
 									<button
-										onClick={() => onDelete(movie)}
+										onClick={() => onDelete(m)}
 										className="btn btn-danger btn-sm"
 									>
 										Delete
