@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import './MovieTable.css';
 import Like from '../common/Like';
+import { map } from 'lodash';
 
-export default class Table extends Component {
+class MovieTable extends Component {
+	raiseSort = path => {
+		let sortColumn = { ...this.props.sortColumn };
+		if (sortColumn.path === path) {
+			sortColumn = sortColumn.order === 'asc' ? 'desc' : 'asc';
+		} else {
+			sortColumn.path = path;
+			sortColumn.order = 'asc';
+		}
+		this.props.onSort(sortColumn);
+	};
+
 	render() {
 		const { moviesPaginated, onLike, onDelete } = this.props;
 		return (
@@ -10,27 +22,27 @@ export default class Table extends Component {
 				<table className="table">
 					<thead>
 						<tr>
-							<th>Title</th>
-							<th>Genre</th>
-							<th>Stock</th>
-							<th>Rate</th>
-							<th></th>
-							<th></th>
+							<th onClick={() => this.raiseSort('title')}>Title</th>
+							<th onClick={() => this.raiseSort('genre.name')}>Genre</th>
+							<th onClick={() => this.raiseSort('numberInStock')}>Stock</th>
+							<th onClick={() => this.raiseSort('dailyRentalRate')}>Rate</th>
+							<th />
+							<th />
 						</tr>
 					</thead>
 					<tbody>
-						{moviesPaginated.map(movie => (
-							<tr key={movie._id}>
-								<td>{movie.genre.name}</td>
-								<td>{movie.title}</td>
-								<td>{movie.numberInStock}</td>
-								<td>{movie.dailyRentalRate}</td>
+						{moviesPaginated.map(m => (
+							<tr key={m._id}>
+								<td>{m.title}</td>
+								<td>{m.genre.name}</td>
+								<td>{m.numberInStock}</td>
+								<td>{m.dailyRentalRate}</td>
 								<td>
-									<Like liked={movie.liked} onLike={() => onLike(movie)} />
+									<Like liked={m.liked} onLike={() => onLike(m)} />
 								</td>
 								<td>
 									<button
-										onClick={() => onDelete(movie)}
+										onClick={() => onDelete(m)}
 										className="btn btn-danger btn-sm"
 									>
 										Delete
@@ -44,3 +56,5 @@ export default class Table extends Component {
 		);
 	}
 }
+
+export default MovieTable;
