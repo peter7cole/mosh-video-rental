@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/mosh-video-rental/static/css/main.7a83bddc.chunk.css",
+    "main.js": "/mosh-video-rental/static/js/main.e0692762.chunk.js",
+    "main.js.map": "/mosh-video-rental/static/js/main.e0692762.chunk.js.map",
+    "runtime-main.js": "/mosh-video-rental/static/js/runtime-main.a282b60c.js",
+    "runtime-main.js.map": "/mosh-video-rental/static/js/runtime-main.a282b60c.js.map",
+    "static/css/2.cf422453.chunk.css": "/mosh-video-rental/static/css/2.cf422453.chunk.css",
+    "static/js/2.53c1fb0c.chunk.js": "/mosh-video-rental/static/js/2.53c1fb0c.chunk.js",
+    "static/js/2.53c1fb0c.chunk.js.map": "/mosh-video-rental/static/js/2.53c1fb0c.chunk.js.map",
+    "index.html": "/mosh-video-rental/index.html",
+    "precache-manifest.ab691165ea6c6ef2e8d3ad5d7d572d14.js": "/mosh-video-rental/precache-manifest.ab691165ea6c6ef2e8d3ad5d7d572d14.js",
+    "service-worker.js": "/mosh-video-rental/service-worker.js",
+    "static/css/2.cf422453.chunk.css.map": "/mosh-video-rental/static/css/2.cf422453.chunk.css.map",
+    "static/css/main.7a83bddc.chunk.css.map": "/mosh-video-rental/static/css/main.7a83bddc.chunk.css.map",
+    "static/js/2.53c1fb0c.chunk.js.LICENSE.txt": "/mosh-video-rental/static/js/2.53c1fb0c.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.css": "/mosh-video-rental/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a282b60c.js",
+    "static/css/2.cf422453.chunk.css",
+    "static/js/2.53c1fb0c.chunk.js",
+    "static/css/main.7a83bddc.chunk.css",
+    "static/js/main.e0692762.chunk.js"
+  ]
+}
